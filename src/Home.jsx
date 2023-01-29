@@ -24,6 +24,30 @@ export function Home() {
     setIsGalleryShowVisable(false);
   };
 
+  const handleUpdateGallery = (id, params) => {
+    axios.patch("http://localhost:3000/galleries/" + id + ".json", params).then((response) => {
+      const updatedGallery = response.data;
+      setCurrentGallery(updatedGallery);
+
+      setGalleries(
+        galleries.map((gallery) => {
+          if (gallery.id === updatedGallery.id) {
+            return updatedGallery;
+          } else {
+            return gallery;
+          }
+        })
+      );
+    });
+  };
+
+  const handleDestroyGallery = (gallery) => {
+    axios.delete("http://localhost:3000/galleries/" + gallery.id, +".json").then((response) => {
+      setGalleries(galleries.filter((g) => g.id !== gallery.id));
+      handleHideGallery();
+    });
+  };
+
   useEffect(handleIndexGalleries, []);
 
   return (
@@ -31,7 +55,11 @@ export function Home() {
       <GalleriesNew />
       <GalleriesIndex galleries={galleries} onSelectGallery={handleGalleryShow} />
       <Modal show={isGalleryShowVisable} onClose={handleHideGallery}>
-        <GalleriesShow gallery={currentGallery} />
+        <GalleriesShow
+          gallery={currentGallery}
+          onUpdateGallery={handleUpdateGallery}
+          onDestroyGallery={handleDestroyGallery}
+        />
       </Modal>
     </div>
   );
