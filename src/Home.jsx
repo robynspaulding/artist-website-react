@@ -1,9 +1,11 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
+import { Login } from "./Login";
 import { GalleriesIndex } from "./GalleriesIndex";
 import { GalleriesNew } from "./GalleriesNew";
 import { GalleriesShow } from "./GalleriesShow";
 import { Modal } from "./Modal";
+import { Signup } from "./Signup";
 export function Home() {
   const [galleries, setGalleries] = useState([]);
   const [isGalleryShowVisable, setIsGalleryShowVisable] = useState(false);
@@ -52,6 +54,8 @@ export function Home() {
 
   return (
     <div>
+      <Signup />
+      <Login />
       <GalleriesNew />
       <GalleriesIndex galleries={galleries} onSelectGallery={handleGalleryShow} />
       <Modal show={isGalleryShowVisable} onClose={handleHideGallery}>
