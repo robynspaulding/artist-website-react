@@ -54,7 +54,7 @@ export function Home() {
 
   return (
     <div>
-      <Signup />
+      {/* <Signup /> */}
       <Login />
       <GalleriesNew />
       <GalleriesIndex galleries={galleries} onSelectGallery={handleGalleryShow} />

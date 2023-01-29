@@ -4,8 +4,8 @@ export function Header() {
   return (
     <header>
       <nav>
-        <a href="#">Home</a> |
-        <LogoutLink />
+        <a href="/">Home</a> | <></>
+        <LogoutLink /> <></>
       </nav>
     </header>
   );

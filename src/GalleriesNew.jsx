@@ -18,35 +18,42 @@ export function GalleriesNew() {
 
   return (
     <div id="gallery-new">
-      <form onSubmit={handleSubmit}>
-        <h1>Add an item to your Gallery:</h1>
-        <div>
-          <div>Title:</div>
-          <input type="text" name="title" />
-        </div>
-        <div>
-          <div>Image URL:</div>
-          <input type="text" name="image" />
-        </div>
-        <div>
-          <div>Materials used: </div>
-          <input type="text" name="materials" />
-        </div>
-        <div>
-          <div>Size:</div>
-          <input type="text" name="size" />
-        </div>
-        <div>
-          <div>Sale Price:</div>
-          <input type="text" name="price" />
-        </div>
-        <div>
-          <div>Description:</div>
-          <input name="description" placeholder="Item Description"></input>
-        </div>
+      {localStorage.jwt === undefined ? (
+        <></>
+      ) : (
+        <>
+          <></>
+          <form onSubmit={handleSubmit}>
+            <h1>Add an item to your Gallery:</h1>
+            <div>
+              <div>Title:</div>
+              <input type="text" name="title" />
+            </div>
+            <div>
+              <div>Image URL:</div>
+              <input type="text" name="image" />
+            </div>
+            <div>
+              <div>Materials used: </div>
+              <input type="text" name="materials" />
+            </div>
+            <div>
+              <div>Size:</div>
+              <input type="text" name="size" />
+            </div>
+            <div>
+              <div>Sale Price:</div>
+              <input type="text" name="price" />
+            </div>
+            <div>
+              <div>Description:</div>
+              <input name="description" placeholder="Item Description"></input>
+            </div>
 
-        <button type="submit">Add Item to Gallery</button>
-      </form>
+            <button type="submit">Add Item to Gallery</button>
+          </form>
+        </>
+      )}
     </div>
   );
 }
