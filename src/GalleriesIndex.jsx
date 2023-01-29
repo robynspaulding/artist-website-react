@@ -10,14 +10,10 @@ export function GalleriesIndex(props) {
           <p>{gallery.description}</p>
           <img src={gallery.image} />
           <p>Price {gallery.price}</p>
-          
           <button onClick={() => props.onSelectGallery(gallery)}> See Details </button>
           _________________________________
-
-
         </div>
       ))}
-
     </div>
-  )
+  );
 }

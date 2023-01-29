@@ -1,6 +1,4 @@
 export function GalleriesShow(props) {
-
-
   return (
     <div>
       <h1>{props.gallery.title}</h1>
@@ -9,7 +7,6 @@ export function GalleriesShow(props) {
       <p>Medium: {props.gallery.materials}</p>
       <p>{props.gallery.description}</p>
       <p>{props.gallery.price}</p>
-
     </div>
-  )
+  );
 }

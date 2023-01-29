@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import { GalleriesIndex } from "./GalleriesIndex";
+import { GalleriesNew } from "./GalleriesNew";
 import { GalleriesShow } from "./GalleriesShow";
 import { Modal } from "./Modal";
 export function Home() {
   const [galleries, setGalleries] = useState([]);
   const [isGalleryShowVisable, setIsGalleryShowVisable] = useState(false);
-  const [ currentGallery, setCurrentGallery] = useState({});
+  const [currentGallery, setCurrentGallery] = useState({});
 
   const handleIndexGalleries = () => {
     axios.get("http://localhost:3000/galleries.json").then((response) => {
@@ -14,8 +15,6 @@ export function Home() {
       setGalleries(response.data);
     });
   };
-
-  
 
   const handleGalleryShow = (gallery) => {
     setIsGalleryShowVisable(true);
@@ -26,9 +25,10 @@ export function Home() {
   };
 
   useEffect(handleIndexGalleries, []);
-  
+
   return (
     <div>
+      <GalleriesNew />
       <GalleriesIndex galleries={galleries} onSelectGallery={handleGalleryShow} />
       <Modal show={isGalleryShowVisable} onClose={handleHideGallery}>
         <GalleriesShow gallery={currentGallery} />
