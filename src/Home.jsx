@@ -11,6 +11,7 @@ import { ResumesShow } from "./ResumesShow";
 import { ResumesNew } from "./ResumesNew";
 import { BiosIndex } from "./BiosIndex";
 import { BiosShow } from "./BiosShow";
+import { Contact } from "./Contact";
 export function Home() {
   const [galleries, setGalleries] = useState([]);
   const [isGalleryShowVisable, setIsGalleryShowVisable] = useState(false);
@@ -165,6 +166,8 @@ export function Home() {
         <ResumesShow resume={currentResume} onUpdateResume={handleUpdateResume} onDestroyResume={handleDestroyResume} />
       </Modal>
       <ResumesNew />
+
+      <Contact />
     </div>
   );
 }

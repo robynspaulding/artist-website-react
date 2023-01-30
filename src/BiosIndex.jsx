@@ -10,6 +10,7 @@ export function BiosIndex(props) {
           <button onClick={() => props.onSelectBio(bio)}> See Details </button>
         </>
       ))}
+      <p></p>
       _____________________________________
     </div>
   );
