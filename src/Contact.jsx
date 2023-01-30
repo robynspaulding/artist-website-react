@@ -29,12 +29,14 @@ export function Contact() {
 
   return (
     <div>
+      <h1> Contact </h1>
       <p>
         If youd like to discuss art, my teaching schedule or if you are interested in purchasing a painting please send
-        me a message and I'll get back to you a soon as I can.
+        me a message and I'll get back to you a soon as I can.{" "}
       </p>
+      <p>Thanks,</p> <p>Birgit</p>
       <form ref={form} onSubmit={sendEmail}>
-        <label>Name</label>
+        <label>Your name:</label>
         <input type="text" name="user_name" />
         <label>Email</label>
         <input type="email" name="user_email" />
