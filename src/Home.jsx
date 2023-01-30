@@ -10,6 +10,7 @@ import { ResumesIndex } from "./ResumesIndex";
 import { ResumesShow } from "./ResumesShow";
 import { ResumesNew } from "./ResumesNew";
 import { BiosIndex } from "./BiosIndex";
+import { BiosShow } from "./BiosShow";
 export function Home() {
   const [galleries, setGalleries] = useState([]);
   const [isGalleryShowVisable, setIsGalleryShowVisable] = useState(false);
@@ -102,11 +103,39 @@ export function Home() {
   useEffect(handleIndexResumes, []);
 
   const [bios, setBios] = useState([]);
+  const [isBioShowVisable, setIsBioShowVisable] = useState(false);
+
+  const [currentBio, setCurrentBio] = useState({});
 
   const handleIndexBios = () => {
     axios.get("http://localhost:3000/bios.json").then((response) => {
       console.log(response.data);
       setBios(response.data);
+    });
+  };
+
+  const handleBioShow = (bio) => {
+    setIsBioShowVisable(true);
+    setCurrentBio(bio);
+  };
+  const handleHideBio = () => {
+    setIsBioShowVisable(false);
+  };
+
+  const handleUpdateBio = (id, params) => {
+    axios.patch("http://localhost:3000/bios/" + id + ".json", params).then((response) => {
+      const updatedBio = response.data;
+      setCurrentBio(updatedBio);
+
+      setBios(
+        bios.map((bio) => {
+          if (bio.id === updatedBio.id) {
+            return updatedBio;
+          } else {
+            return bio;
+          }
+        })
+      );
     });
   };
 
@@ -126,7 +155,10 @@ export function Home() {
         />
       </Modal>
 
-      <BiosIndex bios={bios} />
+      <BiosIndex bios={bios} onSelectBio={handleBioShow} />
+      <Modal show={isBioShowVisable} onClose={handleHideBio}>
+        <BiosShow bio={currentBio} onUpdateBio={handleUpdateBio} />
+      </Modal>
 
       <ResumesIndex resumes={resumes} onSelectResume={handleResumeShow} />
       <Modal show={isResumeShowVisable} onClose={handleHideResume}>
