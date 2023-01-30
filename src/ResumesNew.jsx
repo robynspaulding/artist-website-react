@@ -24,7 +24,7 @@ export function ResumesNew() {
         <>
           <></>
           <form onSubmit={handleSubmit}>
-            <h1>Add an item to your list:</h1>
+            <h3>Add an item to your list of accomplishments:</h3>
             <div>
               <div>Summary:</div>
               <input type="text" name="summary" />

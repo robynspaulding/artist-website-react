@@ -7,6 +7,7 @@ export function ResumesIndex(props) {
           <h3>Summary: {resume.summary}</h3>
           <p>Link: {resume.url}</p>
           <button onClick={() => props.onSelectResume(resume)}> See Details </button>
+          <p></p>
           _________________________________
         </div>
       ))}
