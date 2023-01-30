@@ -9,6 +9,7 @@ import { Signup } from "./Signup";
 import { ResumesIndex } from "./ResumesIndex";
 import { ResumesShow } from "./ResumesShow";
 import { ResumesNew } from "./ResumesNew";
+import { BiosIndex } from "./BiosIndex";
 export function Home() {
   const [galleries, setGalleries] = useState([]);
   const [isGalleryShowVisable, setIsGalleryShowVisable] = useState(false);
@@ -100,6 +101,17 @@ export function Home() {
 
   useEffect(handleIndexResumes, []);
 
+  const [bios, setBios] = useState([]);
+
+  const handleIndexBios = () => {
+    axios.get("http://localhost:3000/bios.json").then((response) => {
+      console.log(response.data);
+      setBios(response.data);
+    });
+  };
+
+  useEffect(handleIndexBios, []);
+
   return (
     <div>
       {/* <Signup /> */}
@@ -113,6 +125,8 @@ export function Home() {
           onDestroyGallery={handleDestroyGallery}
         />
       </Modal>
+
+      <BiosIndex bios={bios} />
 
       <ResumesIndex resumes={resumes} onSelectResume={handleResumeShow} />
       <Modal show={isResumeShowVisable} onClose={handleHideResume}>
