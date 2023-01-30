@@ -6,6 +6,8 @@ import { GalleriesNew } from "./GalleriesNew";
 import { GalleriesShow } from "./GalleriesShow";
 import { Modal } from "./Modal";
 import { Signup } from "./Signup";
+import { ResumesIndex } from "./ResumesIndex";
+import { ResumesShow } from "./ResumesShow";
 export function Home() {
   const [galleries, setGalleries] = useState([]);
   const [isGalleryShowVisable, setIsGalleryShowVisable] = useState(false);
@@ -52,6 +54,27 @@ export function Home() {
 
   useEffect(handleIndexGalleries, []);
 
+  const [resumes, setResumes] = useState([]);
+  const [isResumeShowVisable, setIsResumeShowVisable] = useState(false);
+  const [currentResume, setCurrentResume] = useState({});
+
+  const handleIndexResumes = () => {
+    axios.get("http://localhost:3000/resumes.json").then((response) => {
+      console.log(response.data);
+      setResumes(response.data);
+    });
+  };
+
+  const handleResumeShow = (resume) => {
+    setIsResumeShowVisable(true);
+    setCurrentResume(resume);
+  };
+  const handleHideResume = () => {
+    setIsResumeShowVisable(false);
+  };
+
+  useEffect(handleIndexResumes, []);
+
   return (
     <div>
       {/* <Signup /> */}
@@ -63,6 +86,15 @@ export function Home() {
           gallery={currentGallery}
           onUpdateGallery={handleUpdateGallery}
           onDestroyGallery={handleDestroyGallery}
+        />
+      </Modal>
+
+      <ResumesIndex resumes={resumes} onSelectResume={handleResumeShow} />
+      <Modal show={isResumeShowVisable} onClose={handleHideResume}>
+        <ResumesShow
+          resume={currentResume}
+          // onUpdateResume={handleUpdateResume}
+          // onDestroyResume={handleDestroyResume}
         />
       </Modal>
     </div>
