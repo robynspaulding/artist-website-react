@@ -8,6 +8,7 @@ import { Modal } from "./Modal";
 import { Signup } from "./Signup";
 import { ResumesIndex } from "./ResumesIndex";
 import { ResumesShow } from "./ResumesShow";
+import { ResumesNew } from "./ResumesNew";
 export function Home() {
   const [galleries, setGalleries] = useState([]);
   const [isGalleryShowVisable, setIsGalleryShowVisable] = useState(false);
@@ -73,6 +74,30 @@ export function Home() {
     setIsResumeShowVisable(false);
   };
 
+  const handleUpdateResume = (id, params) => {
+    axios.patch("http://localhost:3000/resumes/" + id + ".json", params).then((response) => {
+      const updatedResume = response.data;
+      setCurrentResume(updatedResume);
+
+      setResumes(
+        resumes.map((resume) => {
+          if (resume.id === updatedResume.id) {
+            return updatedResume;
+          } else {
+            return resume;
+          }
+        })
+      );
+    });
+  };
+
+  const handleDestroyResume = (resume) => {
+    axios.delete("http://localhost:3000/resumes/" + resume.id, +".json").then((response) => {
+      setResumes(resumes.filter((r) => r.id !== resume.id));
+      handleHideResume();
+    });
+  };
+
   useEffect(handleIndexResumes, []);
 
   return (
@@ -91,12 +116,9 @@ export function Home() {
 
       <ResumesIndex resumes={resumes} onSelectResume={handleResumeShow} />
       <Modal show={isResumeShowVisable} onClose={handleHideResume}>
-        <ResumesShow
-          resume={currentResume}
-          // onUpdateResume={handleUpdateResume}
-          // onDestroyResume={handleDestroyResume}
-        />
+        <ResumesShow resume={currentResume} onUpdateResume={handleUpdateResume} onDestroyResume={handleDestroyResume} />
       </Modal>
+      <ResumesNew />
     </div>
   );
 }

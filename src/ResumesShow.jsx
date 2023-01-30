@@ -16,7 +16,7 @@ export function ResumesShow(props) {
       <p>{props.resume.url}</p>
       {/* Make this a Link later with react-router-dom */}
 
-      {/* {localStorage.jwt === undefined ? (
+      {localStorage.jwt === undefined ? (
         <></>
       ) : (
         <>
@@ -33,10 +33,10 @@ export function ResumesShow(props) {
             <button type="submit">Update Entry</button>
           </form>
           <div>
-            <button onClick={handleClick}>Delete resume Entry</button>
+            <button onClick={handleClick}>Delete Resume Entry</button>
           </div>
         </>
-      )} */}
+      )}
     </div>
   );
 }
