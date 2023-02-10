@@ -1,7 +1,7 @@
 export function GalleriesIndex(props) {
   return (
     <div id="galleries-index">
-      <h2>Gallery</h2>
+      <h1>Gallery</h1>
       {props.galleries.map((gallery) => (
         <div key={gallery.id}>
           <h3>Title: {gallery.title}</h3>

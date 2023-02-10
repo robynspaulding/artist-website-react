@@ -1,7 +1,7 @@
 export function ResumesIndex(props) {
   return (
     <div id="resumes-index">
-      <h2>Experience and Accolades</h2>
+      <h1>Experience and Accolades</h1>
       {props.resumes.map((resume) => (
         <div key={resume.id}>
           <h3>{resume.summary}</h3>

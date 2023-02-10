@@ -33,20 +33,27 @@ export function Header() {
         <Modal show={isLoginVisible} onClose={handleLoginClose}>
           <Login onLoginClose={handleLoginClose} />
         </Modal>
-        <a href="#" onClick={handleSignupShow}>
-          Signup
-        </a>
+        <a href="#galleries-index">Gallery</a>
         <> | </>
-        <a href="#" onClick={handleLoginShow}>
-          Login
-        </a>
-        <> | </>
-        <a href="#galleries-index">Gallery</a> <> | </>
         <a href="#resumes-index">Experience and Accolades</a>
         <> | </>
         <a href="#bios-index">Bio</a>
         <> | </>
-        <LogoutLink /> <></>
+        {localStorage.jwt === undefined ? (
+          <>
+            <a href="#" onClick={handleSignupShow}>
+              Signup
+            </a>
+            <> | </>
+            <a href="#" onClick={handleLoginShow}>
+              Login
+            </a>
+          </>
+        ) : (
+          <>
+            <LogoutLink />{" "}
+          </>
+        )}
       </nav>
     </header>
   );

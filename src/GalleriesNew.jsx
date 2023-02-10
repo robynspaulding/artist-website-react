@@ -24,7 +24,7 @@ export function GalleriesNew() {
         <>
           <></>
           <form onSubmit={handleSubmit}>
-            <h1>Add an item to your Gallery:</h1>
+            <h2>Add an item to your Gallery:</h2>
             <div>
               <div>Title:</div>
               <input type="text" name="title" />
