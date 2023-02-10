@@ -8,7 +8,7 @@ export function GalleriesIndex(props) {
           <p>Size: {gallery.size}</p>
           <p>Materials: {gallery.materials}</p>
           <p>{gallery.description}</p>
-          <img src={gallery.image} />
+          <img className="image" src={gallery.image} />
           <p>Price: {gallery.price}</p>
           <button onClick={() => props.onSelectGallery(gallery)}> See Details </button>
           <p></p>

@@ -144,9 +144,10 @@ export function Home() {
 
   return (
     <div>
-      {/* <Signup /> */}
-      <Login />
-      <GalleriesNew />
+      <BiosIndex bios={bios} onSelectBio={handleBioShow} />
+      <Modal show={isBioShowVisable} onClose={handleHideBio}>
+        <BiosShow bio={currentBio} onUpdateBio={handleUpdateBio} />
+      </Modal>
       <GalleriesIndex galleries={galleries} onSelectGallery={handleGalleryShow} />
       <Modal show={isGalleryShowVisable} onClose={handleHideGallery}>
         <GalleriesShow
@@ -155,18 +156,12 @@ export function Home() {
           onDestroyGallery={handleDestroyGallery}
         />
       </Modal>
-
-      <BiosIndex bios={bios} onSelectBio={handleBioShow} />
-      <Modal show={isBioShowVisable} onClose={handleHideBio}>
-        <BiosShow bio={currentBio} onUpdateBio={handleUpdateBio} />
-      </Modal>
-
+      <GalleriesNew />
       <ResumesIndex resumes={resumes} onSelectResume={handleResumeShow} />
       <Modal show={isResumeShowVisable} onClose={handleHideResume}>
         <ResumesShow resume={currentResume} onUpdateResume={handleUpdateResume} onDestroyResume={handleDestroyResume} />
       </Modal>
       <ResumesNew />
-
       <Contact />
     </div>
   );

@@ -30,7 +30,7 @@ export function Login() {
 
   return (
     <div id="login">
-      <h2>Admin Login</h2>
+      <h1>Login</h1>
       <ul>
         {errors.map((error) => (
           <li key={error}>{error}</li>

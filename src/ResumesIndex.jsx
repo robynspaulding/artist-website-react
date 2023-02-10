@@ -4,8 +4,9 @@ export function ResumesIndex(props) {
       <h2>Experience and Accolades</h2>
       {props.resumes.map((resume) => (
         <div key={resume.id}>
-          <h3>Summary: {resume.summary}</h3>
-          <p>Link: {resume.url}</p>
+          <h3>{resume.summary}</h3>
+          <a href={resume.url}>Link to Article</a>
+          <p></p>
           <button onClick={() => props.onSelectResume(resume)}> See Details </button>
           <p></p>
           _________________________________
