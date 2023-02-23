@@ -30,5 +30,4 @@ You can view the app on http://localhost:5173.
 ## Future Plans
 
 - Styling to have a more polished and professional look.
-- image urls that don't expire
 - hosting service
