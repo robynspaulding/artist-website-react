@@ -8,7 +8,7 @@ This front end is the user interface for an artists portfolio website that will 
 
 - <a href="https://github.com/robynspaulding/artist-website-react">React.js frontend - This Repo!</a>
 - <a href="https://github.com/robynspaulding/artist-website-api">Ruby on Rails backend </a>
-- EmailJS: JavaScript library that helps send emails using only client-side technologies
+- <a href="https://emailjs.com">EmailJS: JavaScript library that helps send emails using only client-side technologies </a> 
 
 ## Installation
 
